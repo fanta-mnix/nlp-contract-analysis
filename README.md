@@ -11,7 +11,7 @@ Beyond automation of simple tasks, Machine Learning can also be used to augment 
 
 - Highligh important information in a document
 - Search for documents according to a query
-- Recommend similar documents
+- Recommend related documents
 
 This processes is usually refered to as [Technology Assisted Review](http://www.edrm.net/frameworks-and-standards/technology-assisted-review/) (TAR).
 
