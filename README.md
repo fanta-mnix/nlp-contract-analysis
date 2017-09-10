@@ -25,3 +25,5 @@ Contracts that are extremely one-sided are called *Unconscionable* and can be vo
 
 To avoid being unknowingly caught in such terms, one could hire a lawyer in order to get contracts scrutinized, but it would prove too much of a hassle for people contracting Wireless Services or Insurance, for example. This project aims to help people not familiar with law to spot potential problems for those cases where professional help is unavailable.
 
+Examples of such terms are [Early Termination Fees](https://www.att.com/equipment/legal/service-agreement.jsp?q_termsKey=postpaidServiceAgreement&q_termsName=Service+Agreement), or [Retention of user data after you leave a service](https://del.icio.us/terms).
+
