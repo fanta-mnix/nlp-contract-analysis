@@ -23,5 +23,5 @@ Put it simply, a contract is an agreement between (generally) two parties that c
 
 Contracts crafted this way are called *Unconscionable* and can be voided by a court if the exploitation is too great. For cases that are not so extreme, though, not much can be done except for paying attention to what is written in the terms before signing the contract.
 
-To avoid problems like that, one could hire a lawyer in order to get contracts scrutinized, but it would prove too much of a hassle for people contracting Wireless Services or Insurance, for example. This project aims to provide help analyzing contracts in those cases where professional help is unfeasible, impractical or undesired.
+To avoid problems like that, one could hire a lawyer in order to get contracts scrutinized, but it would prove too much of a hassle for people contracting Wireless Services or Insurance, for example. This project aims to help people not familiar with law to analyze contracts in those cases where professional help is unfeasible, impractical or undesired.
 
