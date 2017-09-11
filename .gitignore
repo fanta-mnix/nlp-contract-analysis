@@ -102,3 +102,4 @@ ENV/
 
 ### JetBrains IDEs
 /.idea/
+/data/
