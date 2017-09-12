@@ -1,11 +1,11 @@
-import bs4
-import requests
-
-from scraping import format_element, write_all
+from scraper.BaseScraper import BaseScraper
+from util import write_all
 
 
-response = requests.get('https://about.500px.com/terms/')
-soup = bs4.BeautifulSoup(response.content, 'html5lib')
-terms = u'\n'.join(format_element(el) for el in soup.select('div.section.clearfix > div.left'))
+def save_terms(url, selector, path, cookie=None):
+    terms = BaseScraper(url, selector, cookie).fetch()
+    write_all(path, terms)
 
-write_all('data/500px.txt', terms)
+
+save_terms('https://web.archive.org/web/20120919090519/http://500px.com/terms',
+           '#terms > div.left-legal > div.section > div.left', 'data/500px.md')
