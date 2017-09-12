@@ -24,6 +24,24 @@ class BaseScraper:
 def format_element(root, indent_size=4):
     import types
 
+    def join(iterable):
+        def interleave():
+            iterator = iter(item for item in iterable if item)
+            try:
+                last = next(iterator)
+                yield last
+            except StopIteration:
+                return
+
+            for el in iterator:
+                if not last.endswith(u'\n'):
+                    yield u' '
+
+                yield el
+                last = el
+
+        return u''.join(interleave())
+
     def format_element_with(element, indentation):
         if isinstance(element, types.StringTypes):
             return element.strip()
@@ -32,7 +50,7 @@ def format_element(root, indent_size=4):
             return u'\n'
 
         child_indentation = indentation + 1 if element.name == 'li' else indentation
-        inner_text = u''.join(format_element_with(child, child_indentation) for child in element.children)
+        inner_text = join(format_element_with(child, child_indentation) for child in element.children)
 
         if element.name == 'p':
             return u'\n' + inner_text + u'\n'
