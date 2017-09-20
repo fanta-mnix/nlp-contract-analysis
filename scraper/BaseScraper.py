@@ -46,21 +46,24 @@ def format_element(root, indent_size=4):
     def normalize_string(string):
         return re.sub(r'\s+', u' ', string).strip()
 
+    def normalize_line_breaks(string):
+        return re.sub(r'\n{3,}', u'\n\n', string)
+
     def format_element_with(element, indentation):
         if isinstance(element, types.StringTypes):
             return normalize_string(element)
 
         if element.name == 'br':
-            return u'\n'
+            return u'\n\n'
 
         child_indentation = indentation + 1 if element.name == 'li' else indentation
         inner_text = join(format_element_with(child, child_indentation) for child in element.children)
 
         if element.name == 'p':
-            return u'\n' + inner_text + u'\n'
+            return u'\n\n' + inner_text + u'\n\n'
 
         if element.name in ['ol', 'ul']:
-            return u'\n' + inner_text
+            return u'\n\n' + inner_text + u'\n\n'
 
         if element.name == 'li':
             if not element.find(['h1', 'h2', 'h3', 'h4']):
@@ -71,9 +74,9 @@ def format_element(root, indent_size=4):
             prefix = u'#' * int(element.name[1]) + u' '
             return u'\n' + prefix + inner_text.upper() + u'\n'
 
-        if element.name == 'strong':
+        if element.name in ['strong', 'b']:
             return u'**' + inner_text + u'**'
 
         return inner_text
 
-    return format_element_with(root, 0)
+    return normalize_line_breaks(format_element_with(root, 0))
