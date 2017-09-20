@@ -66,11 +66,11 @@ def format_element(root, indent_size=4):
             return u'\n\n' + inner_text + u'\n\n'
 
         if element.name == 'li':
-            if not element.find(['h1', 'h2', 'h3', 'h4']):
+            if not element.find(['h1', 'h2', 'h3', 'h4', 'h5']):
                 indent = u' ' * (indentation * indent_size)
                 return indent + u'- ' + inner_text + u'\n'
 
-        if element.name in ['h1', 'h2', 'h3', 'h4']:
+        if element.name in ['h1', 'h2', 'h3', 'h4', 'h5']:
             prefix = u'#' * int(element.name[1]) + u' '
             return u'\n' + prefix + inner_text.upper() + u'\n'
 

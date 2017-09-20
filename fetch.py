@@ -27,3 +27,6 @@ save_terms('https://web.archive.org/web/20130505225004/https://www.amazon.com/gp
 
 save_terms('https://web.archive.org/web/20120810143123/http://soundcloud.com/pages/privacy',
            '#main-wrapper-inner', 'data/soundcloud_privacy.md')
+
+save_terms('https://web.archive.org/web/20130426005003/https://www.mint.com/how-it-works/security/policy/',
+           '#content', 'data/mint_privacy_policy.md')
