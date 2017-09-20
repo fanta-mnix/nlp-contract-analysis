@@ -24,3 +24,6 @@ save_terms('https://web.archive.org/web/20120909061211/http://store.steampowered
 
 save_terms('https://web.archive.org/web/20130505225004/https://www.amazon.com/gp/help/customer/display.html/ref=footer_privacy?ie=UTF8&nodeId=468496',
            'td.center-col > span.small', 'data/amazon_privacy_notice.md')
+
+save_terms('https://web.archive.org/web/20120810143123/http://soundcloud.com/pages/privacy',
+           '#main-wrapper-inner', 'data/soundcloud_privacy.md')

@@ -74,7 +74,7 @@ def format_element(root, indent_size=4):
             prefix = u'#' * int(element.name[1]) + u' '
             return u'\n' + prefix + inner_text.upper() + u'\n'
 
-        if element.name in ['strong', 'b']:
+        if element.name in ['strong', 'b', 'em']:
             return u'**' + inner_text + u'**'
 
         return inner_text
