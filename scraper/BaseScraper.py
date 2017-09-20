@@ -1,5 +1,6 @@
 import bs4
 import requests
+import logging
 
 
 class BaseScraper:
@@ -16,7 +17,10 @@ class BaseScraper:
         if self.cookie is not None:
             headers['Cookie'] = self.cookie
 
+        logging.info('Requesting %s', self.url)
         response = requests.get(self.url, headers=headers)
+
+        logging.info('Parsing %s', self.url)
         soup = bs4.BeautifulSoup(response.content, 'html5lib')
         return self.parse(soup)
 
@@ -47,7 +51,8 @@ def format_element(root, indent_size=4):
         return re.sub(r'\s+', u' ', string).strip()
 
     def normalize_line_breaks(string):
-        return re.sub(r'\n{3,}', u'\n\n', string)
+        normalized = re.sub(r'(\n *- )\n+', r'\1', string)
+        return re.sub(r'\n{3,}', u'\n\n', normalized)
 
     def format_element_with(element, indentation):
         if isinstance(element, types.StringTypes):
