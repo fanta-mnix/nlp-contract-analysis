@@ -12,7 +12,7 @@ class BaseScraper:
         return u'\n'.join(format_element(el) for el in soup.select(self.selector))
 
     def fetch(self):
-        headers = headers={'Accept-Language': 'en-US,en;q=0.8'}
+        headers = {'Accept-Language': 'en-US,en;q=0.8'}
         if self.cookie is not None:
             headers['Cookie'] = self.cookie
 
@@ -23,6 +23,7 @@ class BaseScraper:
 
 def format_element(root, indent_size=4):
     import types
+    import re
 
     def join(iterable):
         def interleave():
@@ -42,9 +43,12 @@ def format_element(root, indent_size=4):
 
         return u''.join(interleave())
 
+    def normalize_string(string):
+        return re.sub(r'\s+', u' ', string).strip()
+
     def format_element_with(element, indentation):
         if isinstance(element, types.StringTypes):
-            return element.strip()
+            return normalize_string(element)
 
         if element.name == 'br':
             return u'\n'
@@ -59,8 +63,9 @@ def format_element(root, indent_size=4):
             return u'\n' + inner_text
 
         if element.name == 'li':
-            indent = u' ' * (indentation * indent_size)
-            return indent + u'- ' + inner_text + u'\n'
+            if not element.find(['h1', 'h2', 'h3', 'h4']):
+                indent = u' ' * (indentation * indent_size)
+                return indent + u'- ' + inner_text + u'\n'
 
         if element.name in ['h1', 'h2', 'h3', 'h4']:
             prefix = u'#' * int(element.name[1]) + u' '
