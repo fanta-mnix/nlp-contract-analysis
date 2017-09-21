@@ -9,7 +9,9 @@ def save_terms(url, selector, path, cookie=None):
     write_all(path, terms)
 
 
-def main():
+def main(log_level=logging.INFO):
+    logging.basicConfig(level=log_level)
+
     save_terms('https://web.archive.org/web/20120919090519/http://500px.com/terms',
                '#terms > div.left-legal > div.section > div.left', 'data/500px.md')
 
@@ -39,7 +41,15 @@ def main():
     save_terms('https://web.archive.org/web/20120809021733/https://www.cloudant.com/privacy/',
                '#pageArea', 'data/cloudant_privacy_policy.md')
 
+    save_terms('https://web.archive.org/web/20120809021733/https://www.cloudant.com/privacy/',
+               '#pageArea', 'data/cloudant_privacy_policy.md')
+
+    save_terms('https://web.archive.org/web/20120913074025/http://www.delicious.com/privacy',
+               'div.leftColumn.contentBox', 'data/delicious_privacy_policy.md')
+
+    save_terms('https://raw.githubusercontent.com/tosdr/tosback2/97cac755d1431a6cc869cdfbf0f4bbd23767169d/crawl_reviewed/couchsurfing.org/Privacy%20Policy.txt',
+               'body', 'data/couchsurfing_privacy_policy.md')
+
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
     main()
